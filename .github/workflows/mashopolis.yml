@@ -61,8 +61,10 @@ jobs:
     - name: Execute sync
       run: python3.8 main.py ${{ env.TABLE_NAME }} --max_days=${{ github.event.inputs.max_days || 7 }}
     - name: Upload logs as artifacts
+      if: failure()
       uses: actions/upload-artifact@v4
       with:
+        name: ${{ env.TABLE_NAME }}-automation-logs
         path: ./*.log
 
   Cleanup_Synced_Rows:
