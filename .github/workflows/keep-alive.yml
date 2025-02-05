@@ -20,7 +20,7 @@ jobs:
 
     # 1. Local checkout & config
     - name: Checkout repository
-      uses: actions/checkout@v3
+      uses: actions/checkout@v4
 
     # 2. Remote config 
     - name: Configure Git User
