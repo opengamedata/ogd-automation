@@ -65,6 +65,7 @@ jobs:
       if: failure()
       uses: actions/upload-artifact@v4
       with:
+        name: ${{ env.TABLE_NAME }}-automation-logs
         path: ./*.log
 
   Cleanup_Synced_Rows:
