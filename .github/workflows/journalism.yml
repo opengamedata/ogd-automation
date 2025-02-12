@@ -21,13 +21,17 @@ env:
 jobs:
   Mysql_To_BigQuery_Sync:
     name: Archive MySQL data to BigQuery
-    runs-on: ubuntu-20.04
+    runs-on: ubuntu-24.04
 
     steps:
 
     # 1. Local checkout & config
     - name: Checkout repository
       uses: actions/checkout@v4
+    - name: Get Dependencies
+      uses: opengamedata/setup-ogd-py-dependencies@v1.2
+      with:
+        python_version: 3.12
     - name: Set up config.py file from config.py.template
       uses: ./.github/actions/OGD_automation_config
       with:
