@@ -28,10 +28,6 @@ jobs:
     # 1. Local checkout & config
     - name: Checkout repository
       uses: actions/checkout@v4
-    - name: Get Dependencies
-      uses: opengamedata/setup-ogd-py-dependencies@v1.2
-      with:
-        python_version: 3.8
     - name: Set up config.py file from config.py.template
       uses: ./.github/actions/OGD_automation_config
       with:
