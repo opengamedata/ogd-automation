@@ -44,6 +44,8 @@ jobs:
         bq_table_basename: "${{ env.BQ_DATASET_NAME }}_daily"
 
     # 2. Remote config 
+    - name: Get Dependencies
+      uses: ./.github/actions/OGD_automation_dependencies
     - name: Install OpenConnect
       run: sudo apt-get update && sudo apt-get install openconnect
     - name: Connect to VPN
@@ -54,8 +56,6 @@ jobs:
         project_id: ${{ secrets.OGD_BQ_PROJECT_ID }}
         service_account_key: ${{ secrets.OGD_ARCHIVER_BQ_KEY }}
         export_default_credentials: true
-    - name: Get Dependencies
-      uses: ./.github/actions/OGD_automation_dependencies
     
     # 3. Run script
     - name: Execute sync
