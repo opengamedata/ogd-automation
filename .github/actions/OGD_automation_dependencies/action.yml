@@ -15,11 +15,9 @@ runs:
         sudo apt-get -q install python3.10
     # sudo apt-get -q install python3.10-dev
       shell: bash
-    - name: Check base python version
+    - name: Check that 3.10 was available
       run : |
-        python --version
-        python3 --version
-        python 3.10 --version
+        apt search python3.10
       shell: bash
     - name: Set up pip
       run: |
