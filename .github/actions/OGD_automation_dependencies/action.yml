@@ -20,7 +20,7 @@ runs:
         sudo add-apt-repository ppa:deadsnakes/ppa
         sudo apt-get update
         sudo apt-get install python3.10
-      # shell: bash
+      shell: bash
     - name: Set up pip
       run: |
         python3.10 -m pip install --upgrade pip
