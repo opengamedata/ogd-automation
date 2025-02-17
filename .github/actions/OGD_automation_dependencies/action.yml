@@ -46,5 +46,5 @@ runs:
       run: |
         python3.12 -m pip install setuptools --quiet
         python3.12 -m pip install wheel --quiet
-        python3.12 -m pip install -r requirements.txt --quiet
+        python3.12 -m pip install -r requirements.txt
       shell: bash  
