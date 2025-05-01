@@ -22,15 +22,19 @@ Current workflows are configured to run at the following times:
 
 | Time (UTC) | Time (Central) | Time (Central, Daylight) | Game                 | Status  |
 | ---        | ---            | ---                      | ---                  | ---     |
+|  8:40      | 2:40 (AM)      | 3:40 (AM)                | ANSWER_CAMPUS        | ![Answer Campus](https://github.com/opengamedata/opengamedata-automation/actions/workflows/answer_campus.yml/badge.svg) |
 |  9:00      | 3:00 (AM)      | 4:00 (AM)                | AQUALAB              | ![Aqualab](https://github.com/opengamedata/opengamedata-automation/actions/workflows/aqualab.yml/badge.svg) |
+|  8:55      | 2:55 (AM)      | 3:55 (AM)                | AYCET                | ![All You Can ET](https://github.com/opengamedata/opengamedata-automation/actions/workflows/aycet.yml/badge.svg) |
 |  9:05      | 3:05 (AM)      | 4:05 (AM)                | BACTERIA             | ![Bacteria](https://github.com/opengamedata/opengamedata-automation/actions/workflows/bacteria.yml/badge.svg) |
 | 10:45      | 4:45 (AM)      | 5:45 (AM)                | BALLOON              | ![Balloon](https://github.com/opengamedata/opengamedata-automation/actions/workflows/balloon.yml/badge.svg) |
 |  9:10      | 3:10 (AM)      | 4:10 (AM)                | BLOOM                | ![Bloom](https://github.com/opengamedata/opengamedata-automation/actions/workflows/bloom.yml/badge.svg) |
+|  8:50      | 2:50 (AM)      | 3:50 (AM)                | CRUSHSTATIONS        | ![CrushStations](https://github.com/opengamedata/opengamedata-automation/actions/workflows/crushstations.yml/badge.svg) |
 |  9:15      | 3:15 (AM)      | 4:15 (AM)                | CRYSTAL              | ![Crystal](https://github.com/opengamedata/opengamedata-automation/actions/workflows/crystal.yml/badge.svg) |
 |  9:20      | 3:20 (AM)      | 4:20 (AM)                | CYCLE_CARBON         | ![Carbon Cycle](https://github.com/opengamedata/opengamedata-automation/actions/workflows/cycle_carbon.yml/badge.svg) |
 |  9:25      | 3:25 (AM)      | 4:25 (AM)                | CYCLE_NITROGEN       | ![Nitrogen Cycle](https://github.com/opengamedata/opengamedata-automation/actions/workflows/cycle_nitrogen.yml/badge.svg) |
 |  9:30      | 3:30 (AM)      | 4:30 (AM)                | CYCLE_WATER          | ![Water Cycle](https://github.com/opengamedata/opengamedata-automation/actions/workflows/cycle_water.yml/badge.svg) |
 |  9:35      | 3:35 (AM)      | 4:35 (AM)                | EARTHQUAKE           | ![Earthquake](https://github.com/opengamedata/opengamedata-automation/actions/workflows/earthquake.yml/badge.svg) |
+|  8:45      | 2:45 (AM)      | 3:45 (AM)                | GWAKKAMOLE           | ![Gwakkamole](https://github.com/opengamedata/opengamedata-automation/actions/workflows/gwakkamole.yml/badge.svg) |
 |  9:40      | 3:40 (AM)      | 4:40 (AM)                | ICECUBE              | ![Icecube](https://github.com/opengamedata/opengamedata-automation/actions/workflows/icecube.yml/badge.svg) |
 |  9:45      | 3:45 (AM)      | 4:45 (AM)                | JOURNALISM           | ![Journalism](https://github.com/opengamedata/opengamedata-automation/actions/workflows/journalism.yml/badge.svg) |
 |  9:50      | 3:50 (AM)      | 4:50 (AM)                | JOWILDER             | ![Jo Wilder](https://github.com/opengamedata/opengamedata-automation/actions/workflows/jowilder.yml/badge.svg) |
