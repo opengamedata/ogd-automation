@@ -1,4 +1,4 @@
-name: Slide Events Archive
+name: Censio Slide Events Archive
 run-name: ${{ format('{0} - {1}', github.workflow, github.event_name == 'schedule' && 'Nightly Run' || 'Manual Run') }}
 on:
   workflow_dispatch:
@@ -11,11 +11,11 @@ on:
   schedule:
     # Follows POSIX cron syntax https://pubs.opengroup.org/onlinepubs/9699919799/utilities/crontab.html#tag_20_25_07
     # * is a special character in YAML, so must be quoted
-    # Run at 10:25 UTC every day which is 04:25 CST/05:25 CDT
-    - cron: '55 10 * * *'
+    # Run at 10:25 UTC every Sunday which is 04:25 CST/05:25 CDT
+    - cron: '55 10 * * 0'
 
 env:
-  TABLE_NAME: SLIDE
+  TABLE_NAME: CENSIO_SLIDE
   BQ_DATASET_NAME: slide
 
 jobs:
