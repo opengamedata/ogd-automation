@@ -11,8 +11,8 @@ on:
   schedule:
     # Follows POSIX cron syntax https://pubs.opengroup.org/onlinepubs/9699919799/utilities/crontab.html#tag_20_25_07
     # * is a special character in YAML, so must be quoted
-    # Run at 10:25 UTC every day which is 04:25 CST/05:25 CDT
-    - cron: '05 11 * * *'
+    # Run at 10:25 UTC every Sunday which is 04:25 CST/05:25 CDT
+    - cron: '05 11 * * 0'
 
 env:
   TABLE_NAME: CENSIO_MATCH
