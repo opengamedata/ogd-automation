@@ -15,7 +15,7 @@ on:
     - cron: '55 10 * * *'
 
 env:
-  TABLE_NAME: SLIDE
+  TABLE_NAME: CENSIO_SLIDE
   BQ_DATASET_NAME: slide
 
 jobs:

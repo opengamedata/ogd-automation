@@ -15,7 +15,7 @@ on:
     - cron: '00 11 * * *'
 
 env:
-  TABLE_NAME: STACK
+  TABLE_NAME: CENSIO_STACK
   BQ_DATASET_NAME: stack
 
 jobs:
