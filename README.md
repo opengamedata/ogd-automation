@@ -43,7 +43,8 @@ Current workflows are configured to run at the following times:
 | 10:05      | 4:05 (AM)      | 5:05 (AM)                | Daily     | MASHOPOLIS           | ![Mashopolis](https://github.com/opengamedata/opengamedata-automation/actions/workflows/mashopolis.yml/badge.svg) |
 | 11:05      | 5:05 (AM)      | 6:05 (AM)                | Weekly    | MATCH                | ![Match](https://github.com/opengamedata/opengamedata-automation/actions/workflows/match.yml/badge.svg) |
 | 10:10      | 4:10 (AM)      | 5:10 (AM)                | Daily     | PENGUINS             | ![Penguins](https://github.com/opengamedata/opengamedata-automation/actions/workflows/penguins.yml/badge.svg) |
-| 10:15      | 4:15 (AM)      | 5:15 (AM)                | Daily     | SHADOWSPECT          | ![Shadowspect](https://github.com/opengamedata/opengamedata-automation/actions/workflows/shadowspect.yml/badge.svg) |
+| 10:10      | 4:10 (AM)      | 5:10 (AM)                | Daily     | PENNYCOOK            | ![Pennycook](https://github.com/opengamedata/opengamedata-automation/actions/workflows/pennycook.yml/badge.svg) |
+| 11:10      | 5:10 (AM)      | 6:10 (AM)                | Daily     | SHADOWSPECT          | ![Shadowspect](https://github.com/opengamedata/opengamedata-automation/actions/workflows/shadowspect.yml/badge.svg) |
 | 10:20      | 4:20 (AM)      | 5:20 (AM)                | Daily     | SHIPWRECKS           | ![Shipwrecks](https://github.com/opengamedata/opengamedata-automation/actions/workflows/shipwrecks.yml/badge.svg) |
 | 10:55      | 4:55 (AM)      | 5:55 (AM)                | Weekly    | SLIDE                | ![Slide](https://github.com/opengamedata/opengamedata-automation/actions/workflows/slide.yml/badge.svg) |
 | 11:00      | 5:00 (AM)      | 6:00 (AM)                | Weekly    | STACK                | ![Stack](https://github.com/opengamedata/opengamedata-automation/actions/workflows/stack.yml/badge.svg) |
