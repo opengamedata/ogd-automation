@@ -1,4 +1,4 @@
-name: Aqualab Events Archive
+name: Astro Events Archive
 run-name: ${{ format('{0} - {1}', github.workflow, github.event_name == 'schedule' && 'Nightly Run' || 'Manual Run') }}
 
 on:
