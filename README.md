@@ -34,6 +34,7 @@ Current workflows are configured to run at the following times:
 |  9:25      | 3:25 (AM)      | 4:25 (AM)                | Daily     | CYCLE_NITROGEN       | ![Nitrogen Cycle](https://github.com/opengamedata/opengamedata-automation/actions/workflows/cycle_nitrogen.yml/badge.svg) |
 |  9:30      | 3:30 (AM)      | 4:30 (AM)                | Daily     | CYCLE_WATER          | ![Water Cycle](https://github.com/opengamedata/opengamedata-automation/actions/workflows/cycle_water.yml/badge.svg) |
 |  9:35      | 3:35 (AM)      | 4:35 (AM)                | Daily     | EARTHQUAKE           | ![Earthquake](https://github.com/opengamedata/opengamedata-automation/actions/workflows/earthquake.yml/badge.svg) |
+|  11:15     | 5:15 (AM)      | 6:15 (AM)                | Daily     | ASTRO                | ![Ex Sidera](https://github.com/opengamedata/opengamedata-automation/actions/workflows/astro.yml/badge.svg) |
 |  8:45      | 2:45 (AM)      | 3:45 (AM)                | Daily     | GWAKKAMOLE           | ![Gwakkamole](https://github.com/opengamedata/opengamedata-automation/actions/workflows/gwakkamole.yml/badge.svg) |
 |  9:40      | 3:40 (AM)      | 4:40 (AM)                | Daily     | ICECUBE              | ![Icecube](https://github.com/opengamedata/opengamedata-automation/actions/workflows/icecube.yml/badge.svg) |
 |  9:45      | 3:45 (AM)      | 4:45 (AM)                | Daily     | JOURNALISM           | ![Journalism](https://github.com/opengamedata/opengamedata-automation/actions/workflows/journalism.yml/badge.svg) |
@@ -43,8 +44,8 @@ Current workflows are configured to run at the following times:
 | 10:05      | 4:05 (AM)      | 5:05 (AM)                | Daily     | MASHOPOLIS           | ![Mashopolis](https://github.com/opengamedata/opengamedata-automation/actions/workflows/mashopolis.yml/badge.svg) |
 | 11:05      | 5:05 (AM)      | 6:05 (AM)                | Weekly    | MATCH                | ![Match](https://github.com/opengamedata/opengamedata-automation/actions/workflows/match.yml/badge.svg) |
 | 10:10      | 4:10 (AM)      | 5:10 (AM)                | Daily     | PENGUINS             | ![Penguins](https://github.com/opengamedata/opengamedata-automation/actions/workflows/penguins.yml/badge.svg) |
-| 10:10      | 4:10 (AM)      | 5:10 (AM)                | Daily     | PENNYCOOK            | ![Pennycook](https://github.com/opengamedata/opengamedata-automation/actions/workflows/pennycook.yml/badge.svg) |
-| 11:10      | 5:10 (AM)      | 6:10 (AM)                | Daily     | SHADOWSPECT          | ![Shadowspect](https://github.com/opengamedata/opengamedata-automation/actions/workflows/shadowspect.yml/badge.svg) |
+| 11:10      | 5:10 (AM)      | 6:10 (AM)                | Daily     | PENNYCOOK            | ![Pennycook](https://github.com/opengamedata/opengamedata-automation/actions/workflows/pennycook.yml/badge.svg) |
+| 10:15      | 4:15 (AM)      | 5:15 (AM)                | Daily     | SHADOWSPECT          | ![Shadowspect](https://github.com/opengamedata/opengamedata-automation/actions/workflows/shadowspect.yml/badge.svg) |
 | 10:20      | 4:20 (AM)      | 5:20 (AM)                | Daily     | SHIPWRECKS           | ![Shipwrecks](https://github.com/opengamedata/opengamedata-automation/actions/workflows/shipwrecks.yml/badge.svg) |
 | 10:55      | 4:55 (AM)      | 5:55 (AM)                | Weekly    | SLIDE                | ![Slide](https://github.com/opengamedata/opengamedata-automation/actions/workflows/slide.yml/badge.svg) |
 | 11:00      | 5:00 (AM)      | 6:00 (AM)                | Weekly    | STACK                | ![Stack](https://github.com/opengamedata/opengamedata-automation/actions/workflows/stack.yml/badge.svg) |
@@ -53,5 +54,7 @@ Current workflows are configured to run at the following times:
 | 10:35      | 4:35 (AM)      | 5:35 (AM)                | Daily     | WAVES                | ![Waves](https://github.com/opengamedata/opengamedata-automation/actions/workflows/waves.yml/badge.svg) |
 | 10:50      | 4:50 (AM)      | 5:50 (AM)                | Daily     | WEATHER_STATION      | ![Weather Station](https://github.com/opengamedata/opengamedata-automation/actions/workflows/weather_station.yml/badge.svg) |
 | 10:40      | 4:40 (AM)      | 5:40 (AM)                | Daily     | WIND                 | ![Wind](https://github.com/opengamedata/opengamedata-automation/actions/workflows/wind.yml/badge.svg) |
+
+Current latest run: 11:15 UTC/5:15 CST
 
 Last keep-alive on 07/01/25
