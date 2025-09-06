@@ -23,7 +23,7 @@ on:
         description: "The maximum number of days to export"
         required: false
         type: string
-        default: "30"
+        default: "7"
 
 jobs:
   Mysql_To_BigQuery_Sync:
