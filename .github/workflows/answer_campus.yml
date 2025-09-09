@@ -54,10 +54,8 @@ jobs:
       run: >
         ssh -o StrictHostKeyChecking=no
         -i ./key.txt ${{secrets.VPN_USER}}@${{vars.OGD_LOGGER_HOST}}
-        "mysql -u${{secrets.OGD_ARCHIVING_USER}} -p${{secrets.OGD_ARCHIVING_PASS}}
-          -e '
-            delete from opengamedata.${{ env.TABLE_NAME }}
-            where synced=1
-              and datediff(now(), server_time) > 7
-          '
-        "
+        "mysql -u${{secrets.OGD_ARCHIVING_USER}} -p${{secrets.OGD_ARCHIVING_PASS}} -e '
+          delete from opengamedata.${{ env.TABLE_NAME }}
+          where synced=1
+            and datediff(now(), server_time) > 7
+        '"
