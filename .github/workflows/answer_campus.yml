@@ -27,6 +27,7 @@ jobs:
       mysql_database: "opengamedata"
       mysql_table_name: ANSWER_CAMPUS
       max_days: ${{ github.event.inputs.max_days || 7 }}
+    secrets: inherit
 
 
   Cleanup_Synced_Rows:

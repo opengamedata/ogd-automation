@@ -24,6 +24,19 @@ on:
         required: false
         type: string
         default: "7"
+    secrets:
+      VPN_USER:
+        required: true
+      VPN_PASS:
+        required: true
+      OGD_ARCHIVING_USER:
+        required: true
+      OGD_ARCHIVING_PASS:
+        required: true
+      OGD_BQ_PROJECT_ID:
+        required: true
+      OGD_ARCHIVER_BQ_KEY:
+        required: true
 
 jobs:
   Mysql_To_BigQuery_Sync:
