@@ -16,56 +16,17 @@ on:
 
 env:
   TABLE_NAME: TRANSFORMATION_QUEST
-  BQ_DATASET_NAME: transformation_quest
 
 jobs:
   Mysql_To_BigQuery_Sync:
     name: Archive MySQL data to BigQuery
-    runs-on: ubuntu-24.04
-
-    steps:
-
-    # 1. Local checkout & config
-    - name: Checkout repository
-      uses: actions/checkout@v4
-    - name: Set up config.py file from config.py.template
-      uses: ./.github/actions/OGD_automation_config
-      with:
-        log_level: "DEBUG"
-        sql_host: ${{vars.OGD_LOGGER_HOST}} 
-        vpn_user: ${{secrets.VPN_USER}} # Assumes we're using the same SOE-AD user credentials for VPN connection and SSH'ing into the MySQL server
-        vpn_pass: ${{secrets.VPN_PASS}}
-        sql_user: ${{secrets.OGD_ARCHIVING_USER}} 
-        sql_pass: ${{secrets.OGD_ARCHIVING_PASS}} 
-        sql_db: "opengamedata"
-        sql_table: "${{ env.TABLE_NAME }}"
-        bq_project_id: ${{ secrets.OGD_BQ_PROJECT_ID }}
-        bq_dataset_id: "${{ env.BQ_DATASET_NAME }}"
-        bq_table_basename: "${{ env.BQ_DATASET_NAME }}_daily"
-
-    # 2. Remote config 
-    - name: Get Dependencies
-      uses: ./.github/actions/OGD_automation_dependencies
-    - name: Install OpenConnect
-      run: sudo apt-get update && sudo apt-get install openconnect
-    - name: Connect to VPN
-      run: echo ${{ secrets.VPN_PASS }} | sudo openconnect --protocol=gp -u ${{ secrets.VPN_USER }} --passwd-on-stdin soe.vpn.wisc.edu &
-    - name: Set up Google Cloud SDK
-      uses: google-github-actions/setup-gcloud@v0
-      with:
-        project_id: ${{ secrets.OGD_BQ_PROJECT_ID }}
-        service_account_key: ${{ secrets.OGD_ARCHIVER_BQ_KEY }}
-        export_default_credentials: true
-    
-    # 3. Run script
-    - name: Execute sync
-      run: python3.10 main.py ${{ env.TABLE_NAME }} --max_days=${{ github.event.inputs.max_days || 7 }}
-    - name: Upload logs as artifacts
-      if: failure()
-      uses: actions/upload-artifact@v4
-      with:
-        name: ${{ env.TABLE_NAME }}-automation-logs
-        path: ./*.log
+    uses: ./.github/workflows/archive.yml
+    with:
+      bq_dataset_name: transformation_quest
+      mysql_database: "opengamedata"
+      mysql_table_name: TRANSFORMATION_QUEST
+      max_days: ${{ github.event.inputs.max_days || 7 }}
+    secrets: inherit
 
   Cleanup_Synced_Rows:
     name: Cleanup Synced Rows
@@ -74,10 +35,12 @@ jobs:
     steps:
 
     # 1. Remote config 
-    - name: Install OpenConnect
-      run: sudo apt-get update && sudo apt-get install openconnect
     - name: Connect to VPN
-      run: echo ${{ secrets.VPN_PASS }} | sudo openconnect --protocol=gp -u ${{ secrets.VPN_USER }} --passwd-on-stdin soe.vpn.wisc.edu &
+      uses: opengamedata/actions-openconnect-vpn@v1.1
+      with:
+        username: ${{ secrets.VPN_USER }}
+        password: ${{ secrets.VPN_PASS }}
+        endpoint: "soe.vpn.wisc.edu"
     - name: Setup server key # TODO: figure out/set up key secret for logging in to logger host
       run: |
         mkdir -p ~/.ssh
