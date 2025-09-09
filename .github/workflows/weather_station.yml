@@ -35,10 +35,12 @@ jobs:
     steps:
 
     # 1. Remote config 
-    - name: Install OpenConnect
-      run: sudo apt-get update && sudo apt-get install openconnect
     - name: Connect to VPN
-      run: echo ${{ secrets.VPN_PASS }} | sudo openconnect --protocol=gp -u ${{ secrets.VPN_USER }} --passwd-on-stdin soe.vpn.wisc.edu &
+      uses: opengamedata/actions-openconnect-vpn@v1.1
+      with:
+        username: ${{ secrets.VPN_USER }}
+        password: ${{ secrets.VPN_PASS }}
+        endpoint: "soe.vpn.wisc.edu"
     - name: Setup server key # TODO: figure out/set up key secret for logging in to logger host
       run: |
         mkdir -p ~/.ssh
