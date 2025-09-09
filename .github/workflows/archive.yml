@@ -1,0 +1,90 @@
+name: Game Events Archive Script
+run-name: ${{ format('{0} - {1}', github.workflow, github.event_name == 'schedule' && 'Nightly Run' || 'Manual Run') }}
+
+on:
+  workflow_call:
+    inputs:
+      bq_dataset_name:
+        description: "The name of the BigQuery Dataset to use (typically the game name, in lower-case)"
+        required: true
+        type: string
+        default: "aqualab"
+      mysql_database:
+        description: "The name of the MySQL database to use"
+        required: false
+        type: string
+        default: "opengamedata"
+      mysql_table_name:
+        description: "The name of the table within the MySQL database to use (typically the game name, in upper-case)"
+        required: true
+        type: string
+        default: "AQUALAB"
+      max_days:
+        description: "The maximum number of days to export"
+        required: false
+        type: string
+        default: "7"
+    secrets:
+      VPN_USER:
+        required: true
+      VPN_PASS:
+        required: true
+      OGD_ARCHIVING_USER:
+        required: true
+      OGD_ARCHIVING_PASS:
+        required: true
+      OGD_BQ_PROJECT_ID:
+        required: true
+      OGD_ARCHIVER_BQ_KEY:
+        required: true
+
+jobs:
+  Mysql_To_BigQuery_Sync:
+    name: Archive MySQL data to BigQuery
+    runs-on: ubuntu-24.04
+
+    steps:
+
+    # 1. Local checkout & config
+    - name: Checkout repository
+      uses: actions/checkout@v4
+    - name: Set up config.py file from config.py.template
+      uses: ./.github/actions/OGD_automation_config
+      with:
+        log_level: "DEBUG"
+        sql_host: ${{vars.OGD_LOGGER_HOST}} 
+        vpn_user: ${{secrets.VPN_USER}} # Assumes we're using the same SOE-AD user credentials for VPN connection and SSH'ing into the MySQL server
+        vpn_pass: ${{secrets.VPN_PASS}}
+        sql_user: ${{secrets.OGD_ARCHIVING_USER}} 
+        sql_pass: ${{secrets.OGD_ARCHIVING_PASS}} 
+        sql_db:   "${{ inputs.mysql_database }}"
+        sql_table: "${{ inputs.mysql_table_name }}"
+        bq_project_id: ${{ secrets.OGD_BQ_PROJECT_ID }}
+        bq_dataset_id: "${{ inputs.bq_dataset_name }}"
+        bq_table_basename: "${{ inputs.bq_dataset_name }}_daily"
+
+    # 2. Remote config 
+    - name: Get Dependencies
+      uses: ./.github/actions/OGD_automation_dependencies
+    - name: Set up Google Cloud SDK
+      uses: google-github-actions/setup-gcloud@v0
+      with:
+        project_id: ${{ secrets.OGD_BQ_PROJECT_ID }}
+        service_account_key: ${{ secrets.OGD_ARCHIVER_BQ_KEY }}
+        export_default_credentials: true
+    - name: Connect to VPN
+      uses: opengamedata/actions-openconnect-vpn@v1.1
+      with:
+        username: ${{ secrets.VPN_USER }}
+        password: ${{ secrets.VPN_PASS }}
+        endpoint: "soe.vpn.wisc.edu"
+    
+    # 3. Run script
+    - name: Execute sync
+      run: python3.10 main.py ${{ inputs.mysql_table_name }} --max_days=${{ github.event.inputs.max_days || 7 }}
+    - name: Upload logs as artifacts
+      if: failure()
+      uses: actions/upload-artifact@v4
+      with:
+        name: ${{ inputs.mysql_table_name }}-automation-logs
+        path: ./*.log
