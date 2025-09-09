@@ -16,7 +16,6 @@ on:
 
 env:
   TABLE_NAME: CENSIO_SLIDE
-  BQ_DATASET_NAME: slide
 
 jobs:
   Mysql_To_BigQuery_Sync:

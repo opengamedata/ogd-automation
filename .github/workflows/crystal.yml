@@ -16,7 +16,6 @@ on:
 
 env:
   TABLE_NAME: CRYSTAL
-  BQ_DATASET_NAME: crystal
 
 jobs:
   Mysql_To_BigQuery_Sync:

@@ -16,7 +16,6 @@ on:
 
 env:
   TABLE_NAME: EARTHQUAKE
-  BQ_DATASET_NAME: earthquake
 
 jobs:
   Mysql_To_BigQuery_Sync:

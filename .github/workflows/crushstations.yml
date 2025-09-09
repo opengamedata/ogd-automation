@@ -17,7 +17,6 @@ on:
 
 env:
   TABLE_NAME: CRUSHSTATIONS
-  BQ_DATASET_NAME: crushstations
 
 jobs:
   Mysql_To_BigQuery_Sync:

@@ -16,7 +16,6 @@ on:
 
 env:
   TABLE_NAME: JOWILDER
-  BQ_DATASET_NAME: jowilder
 
 jobs:
   Mysql_To_BigQuery_Sync:

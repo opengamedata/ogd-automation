@@ -16,7 +16,6 @@ on:
 
 env:
   TABLE_NAME: SHIPWRECKS
-  BQ_DATASET_NAME: shipwrecks
 
 jobs:
   Mysql_To_BigQuery_Sync:

@@ -16,7 +16,6 @@ on:
 
 env:
   TABLE_NAME: BALLOON
-  BQ_DATASET_NAME: balloon
 
 jobs:
   Mysql_To_BigQuery_Sync:

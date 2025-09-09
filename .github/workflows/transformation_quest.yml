@@ -16,7 +16,6 @@ on:
 
 env:
   TABLE_NAME: TRANSFORMATION_QUEST
-  BQ_DATASET_NAME: transformation_quest
 
 jobs:
   Mysql_To_BigQuery_Sync:

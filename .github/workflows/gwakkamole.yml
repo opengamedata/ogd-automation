@@ -17,7 +17,6 @@ on:
 
 env:
   TABLE_NAME: GWAKKAMOLE
-  BQ_DATASET_NAME: gwakkamole
 
 jobs:
   Mysql_To_BigQuery_Sync:

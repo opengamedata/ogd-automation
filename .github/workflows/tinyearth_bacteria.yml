@@ -16,7 +16,6 @@ on:
 
 env:
   TABLE_NAME: TE_BACTERIA
-  BQ_DATASET_NAME: te_bacteria
 
 jobs:
   Mysql_To_BigQuery_Sync:

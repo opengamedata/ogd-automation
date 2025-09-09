@@ -16,7 +16,6 @@ on:
 
 env:
   TABLE_NAME: WIND
-  BQ_DATASET_NAME: wind
 
 jobs:
   Mysql_To_BigQuery_Sync:

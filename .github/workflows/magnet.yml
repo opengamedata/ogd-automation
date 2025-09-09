@@ -16,7 +16,6 @@ on:
 
 env:
   TABLE_NAME: MAGNET
-  BQ_DATASET_NAME: magnet
 
 jobs:
   Mysql_To_BigQuery_Sync:

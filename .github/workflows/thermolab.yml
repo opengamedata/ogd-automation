@@ -16,7 +16,6 @@ on:
 
 env:
   TABLE_NAME: THERMOLAB
-  BQ_DATASET_NAME: thermolab
 
 jobs:
   Mysql_To_BigQuery_Sync:
