@@ -1,5 +1,5 @@
-google-cloud-bigquery==3.3.6
-mysql-connector-python==8.0.25
+google-cloud-bigquery==3.36.0
+mysql-connector-python==9.3.0
 sshtunnel==0.4.0
 pyOpenSSL==23.0.0
 paramiko==3.5.*
