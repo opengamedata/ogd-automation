@@ -6,13 +6,13 @@ from enum import Enum
 from typing import Any, Dict, Optional
 
 ## pip module imports
+from google.api_core import exceptions as google_exceptions
 from google.cloud import bigquery
 from google.cloud import bigquery_storage as bqstore
-from google.cloud import bigquery_storage_v1 as bqstore_v1
+from google.cloud.bigquery_storage_v1 import exceptions as bq_exceptions
 from google.cloud.bigquery_storage_v1 import writer as bqwriter
 from google.cloud.exceptions import NotFound
 from google.protobuf import descriptor_pb2
-from google.api_core import exceptions as google_exceptions
 
 ## Local module imports
 from schemas import BigQueryOgdLogRecord_pb2 # ProtoBuf 2 schema for our destination BigQuery table(s)
@@ -93,7 +93,7 @@ class BigQueryWriteInterface:
                     time.sleep(5)
 
                 # StreamClosedError is the exception type for a "This manager has been closed and can not be used" response
-                except bqstore_v1.exceptions.StreamClosedError as ex: 
+                except bq_exceptions.StreamClosedError as ex: 
 
                     Logger.Log("Send failed with exception type google.cloud.bigquery_storage_v1.exceptions.StreamClosedError", logging.WARN)
                     Logger.Log("Creating new stream", logging.WARN)
