@@ -4,6 +4,11 @@ description: "Ensure Python, pip, and pip package dependencies specified in requ
 branding:
   icon: 'download'
   color: 'blue'
+inputs:
+  python_version:
+    description: "The python version to use"
+    required: true
+    default: "3.12"
 runs:
   using: "composite"
   steps:
@@ -12,11 +17,11 @@ runs:
       shell: bash
     - name: Get correct Python
       run: |
-        sudo apt-get -q install python3.12
+        sudo apt-get -q install python${{ inputs.python_version }}
       shell: bash
     - name: Set up pip
       run: |
-        python3.12 -m pip install --upgrade pip
+        python${{ inputs.python_version }} -m pip install --upgrade pip
       shell: bash
     # - name: Get pip cache dir
     #   id: pip-cache
@@ -36,5 +41,5 @@ runs:
     #   shell: bash
     - name: Set up Python libraries
       # if: steps.cache.outputs.cache-hit != 'true'
-      run: python3.12 -m pip install -r requirements.txt
+      run: python${{ inputs.python_version }} -m pip install -r requirements.txt
       shell: bash  
