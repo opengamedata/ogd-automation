@@ -3,20 +3,21 @@ import os
 import time
 import json
 from enum import Enum
-from typing import Any, Dict
+from typing import Any, Dict, Optional
 
 ## pip module imports
+from google.api_core import exceptions as google_exceptions
 from google.cloud import bigquery
-from google.cloud import bigquery_storage_v1
-from google.cloud.bigquery_storage_v1 import types
-from google.cloud.bigquery_storage_v1 import writer
+from google.cloud import bigquery_storage as bqstore
+from google.cloud.bigquery_storage_v1 import exceptions as bq_exceptions
+from google.cloud.bigquery_storage_v1 import writer as bqwriter
 from google.cloud.exceptions import NotFound
 from google.protobuf import descriptor_pb2
-import google.api_core
 
 ## Local module imports
 from schemas import BigQueryOgdLogRecord_pb2 # ProtoBuf 2 schema for our destination BigQuery table(s)
 from utils import Logger
+# TODO : remove old import
 from interfaces import DataInterface
 
 class BigQueryWriteInterface:
@@ -28,11 +29,11 @@ class BigQueryWriteInterface:
         if "GITHUB_ACTIONS" not in os.environ:
             os.environ["GOOGLE_APPLICATION_CREDENTIALS"] = self._config["CREDENTIALS_FILEPATH"]
 
-        self.fq_table_id    = fq_table_id
-        self.write_client: bigquery_storage_v1.BigQueryWriteClient = bigquery_storage_v1.BigQueryWriteClient()
-        self.write_stream = None
-        self.row_request_template = None
-        self.append_rows_stream = None
+        self.fq_table_id          : str                         = fq_table_id
+        self.write_client         : bqstore.BigQueryWriteClient = bqstore.BigQueryWriteClient()
+        self.write_stream         : Optional[bqstore.WriteStream]      = None
+        self.row_request_template : Optional[Any]                      = None
+        self.append_rows_stream   : Optional[bqstore.AppendRowsStream] = None
 
     # Initialize an Append Rows Stream, along with the required Write Stream and request template for data rows
     def initAppendRowsStream(self, forceNewStream: bool = False) -> None:
@@ -48,11 +49,10 @@ class BigQueryWriteInterface:
             self.row_request_template = BigQueryWriteInterface.GetAppendRowsRequestTemplate(self.write_stream.name)
 
         if forceNewStream or self.append_rows_stream is None:
-            self.append_rows_stream = writer.AppendRowsStream(self.write_client, self.row_request_template)
+            self.append_rows_stream = bqwriter.AppendRowsStream(self.write_client, self.row_request_template)
 
     # Send the given appendRowsRequest to BigQuery
-    def SendAppendRowsRequest(self, numPreviousRequests: int, appendRowsRequest: google.cloud.bigquery_storage_v1.types.storage.AppendRowsRequest)\
-         -> bigquery_storage_v1.types.AppendRowsResponse.AppendResult:
+    def SendAppendRowsRequest(self, numPreviousRequests: int, appendRowsRequest: bqstore.AppendRowsRequest) -> bqstore.AppendRowsResponse.AppendResult:
 
         # Initializes an Append Rows Stream, if it hasn't already been done
         self.initAppendRowsStream()
@@ -81,7 +81,7 @@ class BigQueryWriteInterface:
                     return response
 
                 # Unknown is the exception type for a "404 Requested entity was not found" response
-                except google.api_core.exceptions.Unknown as ex: 
+                except google_exceptions.Unknown as ex: 
 
                     Logger.Log("Send failed with exception type google.api_core.exceptions.Unknown", logging.WARN)
                     Logger.Log("Creating new stream", logging.WARN)
@@ -93,7 +93,7 @@ class BigQueryWriteInterface:
                     time.sleep(5)
 
                 # StreamClosedError is the exception type for a "This manager has been closed and can not be used" response
-                except google.cloud.bigquery_storage_v1.exceptions.StreamClosedError as ex: 
+                except bq_exceptions.StreamClosedError as ex: 
 
                     Logger.Log("Send failed with exception type google.cloud.bigquery_storage_v1.exceptions.StreamClosedError", logging.WARN)
                     Logger.Log("Creating new stream", logging.WARN)
@@ -109,6 +109,8 @@ class BigQueryWriteInterface:
     # Close the append rows stream, finalize the write stream, commit the write stream
     def CloseFinalizeAndCommit(self) -> None:
 
+        # TODO : wrap in an if case to avoid error warnings, and raise an exception or something if they're None
+
         # Shutdown background threads and close the streaming connection.
         self.append_rows_stream.close()
 
@@ -117,7 +119,7 @@ class BigQueryWriteInterface:
         self.write_client.finalize_write_stream(name=self.write_stream.name)
 
         # Commit the write stream
-        batch_commit_write_streams_request = types.BatchCommitWriteStreamsRequest()
+        batch_commit_write_streams_request = bqstore.BatchCommitWriteStreamsRequest()
         batch_commit_write_streams_request.parent = self.getParentStringForFqTableId(self.fq_table_id)
         batch_commit_write_streams_request.write_streams = [self.write_stream.name]
         self.write_client.batch_commit_write_streams(batch_commit_write_streams_request)
@@ -182,12 +184,13 @@ class BigQueryWriteInterface:
 
     @staticmethod
     def _assembleSerializedRowDataForOgd(mysqlRow: Dict[str, Any]) -> None:
+        # TODO : sort out the row element error warnings.
 
         row = BigQueryOgdLogRecord_pb2.LogRecord()
 
         # Skipping the auto_increment primary key in mysqlRow[0] since it isn't useful
         row.session_id = mysqlRow['session_id']
-        row.user_id = mysqlRow['user_id']
+        row.user_id    = mysqlRow['user_id']
 
         if mysqlRow['user_data'] is None or mysqlRow['user_data'] == "":
             pass
@@ -267,12 +270,12 @@ class BigQueryWriteInterface:
         
         #Logger.Log(parentPath, logging.INFO)
         
-        writeStream = types.WriteStream()
+        writeStream = bqstore.WriteStream()
 
         # When creating the stream, choose the type. Use the PENDING type to wait
         # until the stream is committed before it is visible. See:
         # https://cloud.google.com/bigquery/docs/reference/storage/rpc/google.cloud.bigquery.storage.v1#google.cloud.bigquery.storage.v1.WriteStream.Type
-        writeStream.type_ = types.WriteStream.Type.PENDING
+        writeStream.type_ = bqstore.WriteStream.Type.PENDING
         writeStream = self.write_client.create_write_stream(
             parent=parentPath, write_stream=writeStream
         )
@@ -295,18 +298,18 @@ class BigQueryWriteInterface:
     def GetAppendRowsRequestTemplate(stream_name):
             
         # Create a template with fields needed for the first request.
-        request_template = types.AppendRowsRequest()
+        request_template = bqstore.AppendRowsRequest()
 
         # The initial request must contain the stream name.
         request_template.write_stream = stream_name
 
         # So that BigQuery knows how to parse the serialized_rows, generate a
         # protocol buffer representation of your message descriptor.
-        proto_schema = types.ProtoSchema()
+        proto_schema = bqstore.ProtoSchema()
         proto_descriptor = descriptor_pb2.DescriptorProto()
         BigQueryOgdLogRecord_pb2.LogRecord.DESCRIPTOR.CopyToProto(proto_descriptor)
         proto_schema.proto_descriptor = proto_descriptor
-        proto_data = types.AppendRowsRequest.ProtoData()
+        proto_data = bqstore.AppendRowsRequest.ProtoData()
         proto_data.writer_schema = proto_schema
         request_template.proto_rows = proto_data
 
@@ -321,9 +324,9 @@ class BigQueryWriteInterface:
         # error, which can be safely ignored.
         #
         # The first request must always have an offset of 0.
-        request = types.AppendRowsRequest()
+        request = bqstore.AppendRowsRequest()
         request.offset = offset
-        proto_data = types.AppendRowsRequest.ProtoData()
+        proto_data = bqstore.AppendRowsRequest.ProtoData()
         proto_data.rows = protoRows
         request.proto_rows = proto_data
 

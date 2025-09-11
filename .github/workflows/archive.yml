@@ -66,12 +66,15 @@ jobs:
     # 2. Remote config 
     - name: Get Dependencies
       uses: ./.github/actions/OGD_automation_dependencies
+      with:
+        python_version: ${{ vars.OGD_PYTHON_VERSION }}
     - name: Set up Google Cloud SDK
-      uses: google-github-actions/setup-gcloud@v0
+      uses: google-github-actions/auth@v3
       with:
         project_id: ${{ secrets.OGD_BQ_PROJECT_ID }}
-        service_account_key: ${{ secrets.OGD_ARCHIVER_BQ_KEY }}
-        export_default_credentials: true
+        credentials_json: ${{ secrets.OGD_ARCHIVER_BQ_KEY }}
+        create_credentials_file: true
+        export_environment_variables: true
     - name: Connect to VPN
       uses: opengamedata/actions-openconnect-vpn@v1.1
       with:
@@ -81,7 +84,7 @@ jobs:
     
     # 3. Run script
     - name: Execute sync
-      run: python3.10 main.py ${{ inputs.mysql_table_name }} --max_days=${{ github.event.inputs.max_days || 7 }}
+      run: python${{ vars.OGD_PYTHON_VERSION }} main.py ${{ inputs.mysql_table_name }} --max_days=${{ github.event.inputs.max_days || 7 }}
     - name: Upload logs as artifacts
       if: failure()
       uses: actions/upload-artifact@v4
