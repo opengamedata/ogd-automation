@@ -8,11 +8,11 @@ on:
         required: false
         type: string
         default: "30"
-  # schedule:
+  schedule:
     # Follows POSIX cron syntax https://pubs.opengroup.org/onlinepubs/9699919799/utilities/crontab.html#tag_20_25_07
     # * is a special character in YAML, so must be quoted
-    # Run at 09:05 UTC every day which is 03:05 CST/04:05 CDT
-    # - cron: '05 9 * * *'
+    # Run at 11:20 UTC every day which is 03:05 CST/04:05 CDT
+    - cron: '20 11 * * *'
 
 env:
   TABLE_NAME: TE_BACTERIA
