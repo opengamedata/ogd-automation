@@ -51,10 +51,11 @@ Current workflows are configured to run at the following times:
 | 11:00      | 5:00 (AM)      | 6:00 (AM)                | Weekly    | STACK                | ![Stack](https://github.com/opengamedata/opengamedata-automation/actions/workflows/stack.yml/badge.svg) |
 | 10:25      | 4:25 (AM)      | 5:25 (AM)                | Daily     | THERMOLAB            | ![Thermo Lab](https://github.com/opengamedata/opengamedata-automation/actions/workflows/thermolab.yml/badge.svg) |
 | 10:30      | 4:30 (AM)      | 5:30 (AM)                | Daily     | TRANSFORMATION_QUEST | ![Transformations Quest](https://github.com/opengamedata/opengamedata-automation/actions/workflows/transformation_quest.yml/badge.svg) |
+| 11:20      | 5:20 (AM)      | 6:20 (AM)                | Daily     | TE_BACTERIA          | ![Tiny Earth: Bacteria](https://github.com/opengamedata/opengamedata-automation/actions/workflows/tinyearth_bacteria.yml/badge.svg) |
 | 10:35      | 4:35 (AM)      | 5:35 (AM)                | Daily     | WAVES                | ![Waves](https://github.com/opengamedata/opengamedata-automation/actions/workflows/waves.yml/badge.svg) |
 | 10:50      | 4:50 (AM)      | 5:50 (AM)                | Daily     | WEATHER_STATION      | ![Weather Station](https://github.com/opengamedata/opengamedata-automation/actions/workflows/weather_station.yml/badge.svg) |
 | 10:40      | 4:40 (AM)      | 5:40 (AM)                | Daily     | WIND                 | ![Wind](https://github.com/opengamedata/opengamedata-automation/actions/workflows/wind.yml/badge.svg) |
 
-Current latest run: 11:15 UTC/5:15 CST
+Current latest run: 11:20 UTC/5:20 CST
 
 Last keep-alive on 10/01/25
