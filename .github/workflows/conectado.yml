@@ -1,0 +1,54 @@
+name: Conectado Events Archive
+run-name: ${{ format('{0} - {1}', github.workflow, github.event_name == 'schedule' && 'Nightly Run' || 'Manual Run') }}
+
+on:
+  workflow_dispatch:
+    inputs:
+      max_days:
+        description: "The maximum number of days to export"
+        required: false
+        type: string
+        default: "30"
+  # schedule:
+    # Follows POSIX cron syntax https://pubs.opengroup.org/onlinepubs/9699919799/utilities/crontab.html#tag_20_25_07
+    # * is a special character in YAML, so must be quoted
+    # Run at 09:00 UTC every day which is 03:00 CST/04:00 CDT
+    # - cron: '50 8 * * *'
+
+env:
+  TABLE_NAME: CONECTADO
+
+jobs:
+  Mysql_To_BigQuery_Sync:
+    name: Archive MySQL data to BigQuery
+    uses: ./.github/workflows/archive.yml
+    with:
+      bq_dataset_name: conectado
+      mysql_database: "opengamedata"
+      mysql_table_name: CONECTADO
+      max_days: ${{ github.event.inputs.max_days || 7 }}
+    secrets: inherit
+
+  Cleanup_Synced_Rows:
+    name: Cleanup Synced Rows
+    runs-on: ubuntu-24.04
+    needs: Mysql_To_BigQuery_Sync
+    steps:
+
+    # 1. Remote config 
+    - name: Connect to VPN
+      uses: opengamedata/actions-openconnect-vpn@v1.1
+      with:
+        username: ${{ secrets.VPN_USER }}
+        password: ${{ secrets.VPN_PASS }}
+        endpoint: "soe.vpn.wisc.edu"
+    - name: Setup server key # TODO: figure out/set up key secret for logging in to logger host
+      run: |
+        mkdir -p ~/.ssh
+        echo '${{secrets.SERVICE_KEY}}' >> ./key.txt
+        chmod 600 ./key.txt
+
+    # 2. Cleanup
+    - name: Run delete of archived data at least a week old
+      run:
+        ssh -o StrictHostKeyChecking=no -i ./key.txt ${{secrets.VPN_USER}}@${{vars.OGD_LOGGER_HOST}} "mysql -u${{secrets.OGD_ARCHIVING_USER}} -p${{secrets.OGD_ARCHIVING_PASS}} -e 'delete from opengamedata.${{ env.TABLE_NAME }} where synced=1 and datediff(now(), server_time) > 7'"
