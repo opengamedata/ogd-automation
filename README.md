@@ -28,6 +28,7 @@ Current workflows are configured to run at the following times:
 |  9:05      | 3:05 (AM)      | 4:05 (AM)                | Daily     | BACTERIA             | ![Bacteria](https://github.com/opengamedata/opengamedata-automation/actions/workflows/bacteria.yml/badge.svg) |
 | 10:45      | 4:45 (AM)      | 5:45 (AM)                | Daily     | BALLOON              | ![Balloon](https://github.com/opengamedata/opengamedata-automation/actions/workflows/balloon.yml/badge.svg) |
 |  9:10      | 3:10 (AM)      | 4:10 (AM)                | Daily     | BLOOM                | ![Bloom](https://github.com/opengamedata/opengamedata-automation/actions/workflows/bloom.yml/badge.svg) |
+|  11:25     | 5:25 (AM)      | 6:25 (AM)                | Daily     | CONECTADO            | ![Conectado](https://github.com/opengamedata/opengamedata-automation/actions/workflows/conectado.yml/badge.svg) |
 |  8:50      | 2:50 (AM)      | 3:50 (AM)                | Daily     | CRUSHSTATIONS        | ![CrushStations](https://github.com/opengamedata/opengamedata-automation/actions/workflows/crushstations.yml/badge.svg) |
 |  9:15      | 3:15 (AM)      | 4:15 (AM)                | Daily     | CRYSTAL              | ![Crystal](https://github.com/opengamedata/opengamedata-automation/actions/workflows/crystal.yml/badge.svg) |
 |  9:20      | 3:20 (AM)      | 4:20 (AM)                | Daily     | CYCLE_CARBON         | ![Carbon Cycle](https://github.com/opengamedata/opengamedata-automation/actions/workflows/cycle_carbon.yml/badge.svg) |
