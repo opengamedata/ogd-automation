@@ -20,42 +20,42 @@ usage: <python> main.py <game> --max-days <count>
 These processes are also set up to run automatically in GitHub actions.
 Current workflows are configured to run at the following times:
 
-| Time (UTC) | Time (Central) | Time (Central, Daylight) | Frequency | Game                 | Status  |
-| ---        | ---            | ---                      | ---       | ---                  | ---     |
-|  8:40      | 2:40 (AM)      | 3:40 (AM)                | Daily     | ANSWER_CAMPUS        | [![Answer Campus][Answer Campus Badge]][Answer Campus Link]    |
-|  9:00      | 3:00 (AM)      | 4:00 (AM)                | Daily     | AQUALAB              | [![Aqualab][Aqualab Badge]][Aqualab Link]                      |
-|  8:55      | 2:55 (AM)      | 3:55 (AM)                | Daily     | AYCET                | [![All You Can ET][All You Can ET Badge]][All You Can ET Link] |
-|  9:05      | 3:05 (AM)      | 4:05 (AM)                | Daily     | BACTERIA             | [![Bacteria][Bacteria Badge]][Bacteria Link] |
-| 10:45      | 4:45 (AM)      | 5:45 (AM)                | Daily     | BALLOON              | [![Balloon][Balloon Badge]][Balloon Link] |
-|  9:10      | 3:10 (AM)      | 4:10 (AM)                | Daily     | BLOOM                | [![Bloom][Bloom Badge]][Bloom Link] |
-|  11:25     | 5:25 (AM)      | 6:25 (AM)                | Daily     | CONECTADO            | [![Conectado][Conectado Badge]][Conectado Link] |
-|  8:50      | 2:50 (AM)      | 3:50 (AM)                | Daily     | CRUSHSTATIONS        | [![CrushStations][CrushStations Badge]][CrushStations Link] |
-|  9:15      | 3:15 (AM)      | 4:15 (AM)                | Daily     | CRYSTAL              | [![Crystal][Crystal Badge]][Crystal Link] |
-|  9:20      | 3:20 (AM)      | 4:20 (AM)                | Daily     | CYCLE_CARBON         | [![Carbon Cycle][Carbon Cycle Badge]][Carbon Cycle Link] |
-|  9:25      | 3:25 (AM)      | 4:25 (AM)                | Daily     | CYCLE_NITROGEN       | [![Nitrogen Cycle][Nitrogen Cycle Badge]][Nitrogen Cycle Link] |
-|  9:30      | 3:30 (AM)      | 4:30 (AM)                | Daily     | CYCLE_WATER          | [![Water Cycle][Water Cycle Badge]][Water Cycle Link] |
-|  9:35      | 3:35 (AM)      | 4:35 (AM)                | Daily     | EARTHQUAKE           | [![Earthquake][Earthquake Badge]][Earthquake Link] |
-|  11:15     | 5:15 (AM)      | 6:15 (AM)                | Daily     | ASTRO                | [![Ex Sidera][Ex Sidera Badge]][Ex Sidera Link] |
-|  8:45      | 2:45 (AM)      | 3:45 (AM)                | Daily     | GWAKKAMOLE           | [![Gwakkamole][Gwakkamole Badge]][Gwakkamole Link] |
-|  9:40      | 3:40 (AM)      | 4:40 (AM)                | Daily     | ICECUBE              | [![Icecube][Icecube Badge]][Icecube Link] |
-|  9:45      | 3:45 (AM)      | 4:45 (AM)                | Daily     | JOURNALISM           | [![Journalism][Journalism Badge]][Journalism Link] |
-|  9:50      | 3:50 (AM)      | 4:50 (AM)                | Daily     | JOWILDER             | [![Jo Wilder][Jo Wilder Badge]][Jo Wilder Link] |
-|  9:55      | 3:55 (AM)      | 4:55 (AM)                | Daily     | LAKELAND             | [![Lakeland][Lakeland Badge]][Lakeland Link] |
-| 10:00      | 4:00 (AM)      | 5:00 (AM)                | Daily     | MAGNET               | [![Magnet][Magnet Badge]][Magnet Link] |
-| 10:05      | 4:05 (AM)      | 5:05 (AM)                | Daily     | MASHOPOLIS           | [![Mashopolis][Mashopolis Badge]][Mashopolis Link] |
-| 11:05      | 5:05 (AM)      | 6:05 (AM)                | Weekly    | MATCH                | [![Match][Match Badge]][Match Link] |
-| 10:10      | 4:10 (AM)      | 5:10 (AM)                | Daily     | PENGUINS             | [![Penguins][Penguins Badge]][Penguins Link] |
-| 11:10      | 5:10 (AM)      | 6:10 (AM)                | Daily     | PENNYCOOK            | [![Pennycook][Pennycook Badge]][Pennycook Link] |
-| 10:15      | 4:15 (AM)      | 5:15 (AM)                | Daily     | SHADOWSPECT          | [![Shadowspect][Shadowspect Badge]][Shadowspect Link] |
-| 10:20      | 4:20 (AM)      | 5:20 (AM)                | Daily     | SHIPWRECKS           | [![Shipwrecks][Shipwrecks Badge]][Shipwrecks Link] |
-| 10:55      | 4:55 (AM)      | 5:55 (AM)                | Weekly    | SLIDE                | [![Slide][Slide Badge]][Slide Link] |
-| 11:00      | 5:00 (AM)      | 6:00 (AM)                | Weekly    | STACK                | [![Stack][Stack Badge]][Stack Link] |
-| 10:25      | 4:25 (AM)      | 5:25 (AM)                | Daily     | THERMOLAB            | [![Thermo Lab][Thermo Lab Badge]][Thermo Lab Link] |
+| Time (UTC) | Time (Central) | Time (Central, Daylight) | Frequency | Game                 | Status                                                            |
+| ---        | ---            | ---                      | ---       | ---                  | ---                                                               |
+|  8:40      | 2:40 (AM)      | 3:40 (AM)                | Daily     | ANSWER_CAMPUS        | [![Answer Campus][Answer Campus Badge]][Answer Campus Link]       |
+|  9:00      | 3:00 (AM)      | 4:00 (AM)                | Daily     | AQUALAB              | [![Aqualab][Aqualab Badge]][Aqualab Link]                         |
+|  8:55      | 2:55 (AM)      | 3:55 (AM)                | Daily     | AYCET                | [![All You Can ET][All You Can ET Badge]][All You Can ET Link]    |
+|  9:05      | 3:05 (AM)      | 4:05 (AM)                | Daily     | BACTERIA             | [![Bacteria][Bacteria Badge]][Bacteria Link]                      |
+| 10:45      | 4:45 (AM)      | 5:45 (AM)                | Daily     | BALLOON              | [![Balloon][Balloon Badge]][Balloon Link]                         |
+|  9:10      | 3:10 (AM)      | 4:10 (AM)                | Daily     | BLOOM                | [![Bloom][Bloom Badge]][Bloom Link]                               |
+|  11:25     | 5:25 (AM)      | 6:25 (AM)                | Daily     | CONECTADO            | [![Conectado][Conectado Badge]][Conectado Link]                   |
+|  8:50      | 2:50 (AM)      | 3:50 (AM)                | Daily     | CRUSHSTATIONS        | [![CrushStations][CrushStations Badge]][CrushStations Link]       |
+|  9:15      | 3:15 (AM)      | 4:15 (AM)                | Daily     | CRYSTAL              | [![Crystal][Crystal Badge]][Crystal Link]                         |
+|  9:20      | 3:20 (AM)      | 4:20 (AM)                | Daily     | CYCLE_CARBON         | [![Carbon Cycle][Carbon Cycle Badge]][Carbon Cycle Link]          |
+|  9:25      | 3:25 (AM)      | 4:25 (AM)                | Daily     | CYCLE_NITROGEN       | [![Nitrogen Cycle][Nitrogen Cycle Badge]][Nitrogen Cycle Link]    |
+|  9:30      | 3:30 (AM)      | 4:30 (AM)                | Daily     | CYCLE_WATER          | [![Water Cycle][Water Cycle Badge]][Water Cycle Link]             |
+|  9:35      | 3:35 (AM)      | 4:35 (AM)                | Daily     | EARTHQUAKE           | [![Earthquake][Earthquake Badge]][Earthquake Link]                |
+|  11:15     | 5:15 (AM)      | 6:15 (AM)                | Daily     | ASTRO                | [![Ex Sidera][Ex Sidera Badge]][Ex Sidera Link]                   |
+|  8:45      | 2:45 (AM)      | 3:45 (AM)                | Daily     | GWAKKAMOLE           | [![Gwakkamole][Gwakkamole Badge]][Gwakkamole Link]                |
+|  9:40      | 3:40 (AM)      | 4:40 (AM)                | Daily     | ICECUBE              | [![Icecube][Icecube Badge]][Icecube Link]                         |
+|  9:45      | 3:45 (AM)      | 4:45 (AM)                | Daily     | JOURNALISM           | [![Journalism][Journalism Badge]][Journalism Link]                |
+|  9:50      | 3:50 (AM)      | 4:50 (AM)                | Daily     | JOWILDER             | [![Jo Wilder][Jo Wilder Badge]][Jo Wilder Link]                   |
+|  9:55      | 3:55 (AM)      | 4:55 (AM)                | Daily     | LAKELAND             | [![Lakeland][Lakeland Badge]][Lakeland Link]                      |
+| 10:00      | 4:00 (AM)      | 5:00 (AM)                | Daily     | MAGNET               | [![Magnet][Magnet Badge]][Magnet Link]                            |
+| 10:05      | 4:05 (AM)      | 5:05 (AM)                | Daily     | MASHOPOLIS           | [![Mashopolis][Mashopolis Badge]][Mashopolis Link]                |
+| 11:05      | 5:05 (AM)      | 6:05 (AM)                | Weekly    | MATCH                | [![Match][Match Badge]][Match Link]                               |
+| 10:10      | 4:10 (AM)      | 5:10 (AM)                | Daily     | PENGUINS             | [![Penguins][Penguins Badge]][Penguins Link]                      |
+| 11:10      | 5:10 (AM)      | 6:10 (AM)                | Daily     | PENNYCOOK            | [![Pennycook][Pennycook Badge]][Pennycook Link]                   |
+| 10:15      | 4:15 (AM)      | 5:15 (AM)                | Daily     | SHADOWSPECT          | [![Shadowspect][Shadowspect Badge]][Shadowspect Link]             |
+| 10:20      | 4:20 (AM)      | 5:20 (AM)                | Daily     | SHIPWRECKS           | [![Shipwrecks][Shipwrecks Badge]][Shipwrecks Link]                |
+| 10:55      | 4:55 (AM)      | 5:55 (AM)                | Weekly    | SLIDE                | [![Slide][Slide Badge]][Slide Link]                               |
+| 11:00      | 5:00 (AM)      | 6:00 (AM)                | Weekly    | STACK                | [![Stack][Stack Badge]][Stack Link]                               |
+| 10:25      | 4:25 (AM)      | 5:25 (AM)                | Daily     | THERMOLAB            | [![Thermo Lab][Thermo Lab Badge]][Thermo Lab Link]                |
 | 10:30      | 4:30 (AM)      | 5:30 (AM)                | Daily     | TRANSFORMATION_QUEST | [![Transformations Quest][Transformations Quest Badge]][Transformations Quest Link] |
-| 11:20      | 5:20 (AM)      | 6:20 (AM)                | Daily     | TE_BACTERIA          | ![Tiny Earth Bacteria][Tiny Earth Bacteria Badge] |
-| 10:35      | 4:35 (AM)      | 5:35 (AM)                | Daily     | WAVES                | [![Waves][Waves Badge]][Waves Link] |
+| 11:20      | 5:20 (AM)      | 6:20 (AM)                | Daily     | TE_BACTERIA          | ![Tiny Earth Bacteria][Tiny Earth Bacteria Badge]                 |
+| 10:35      | 4:35 (AM)      | 5:35 (AM)                | Daily     | WAVES                | [![Waves][Waves Badge]][Waves Link]                               |
 | 10:50      | 4:50 (AM)      | 5:50 (AM)                | Daily     | WEATHER_STATION      | [![Weather Station][Weather Station Badge]][Weather Station Link] |
-| 10:40      | 4:40 (AM)      | 5:40 (AM)                | Daily     | WIND                 | [![Wind][Wind Badge]][Wind Link] |
+| 10:40      | 4:40 (AM)      | 5:40 (AM)                | Daily     | WIND                 | [![Wind][Wind Badge]][Wind Link]                                  |
 
 Current latest run: 11:20 UTC/5:20 CST
 
