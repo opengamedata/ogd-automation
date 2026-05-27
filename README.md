@@ -48,6 +48,7 @@ Current workflows are configured to run at the following times:
 | 11:10      | 5:10 (AM)      | 6:10 (AM)                | Daily     | PENNYCOOK            | [![Pennycook][Pennycook Badge]][Pennycook Link]                   |
 | 10:15      | 4:15 (AM)      | 5:15 (AM)                | Daily     | SHADOWSPECT          | [![Shadowspect][Shadowspect Badge]][Shadowspect Link]             |
 | 10:20      | 4:20 (AM)      | 5:20 (AM)                | Daily     | SHIPWRECKS           | [![Shipwrecks][Shipwrecks Badge]][Shipwrecks Link]                |
+| 10:20      | 2:35 (AM)      | 3:35 (AM)                | Daily     | SPACEFAB             | [![Spacefab][Spacefab Badge]][Spacefab Link]                |
 | 10:55      | 4:55 (AM)      | 5:55 (AM)                | Weekly    | SLIDE                | [![Slide][Slide Badge]][Slide Link]                               |
 | 11:00      | 5:00 (AM)      | 6:00 (AM)                | Weekly    | STACK                | [![Stack][Stack Badge]][Stack Link]                               |
 | 10:25      | 4:25 (AM)      | 5:25 (AM)                | Daily     | THERMOLAB            | [![Thermo Lab][Thermo Lab Badge]][Thermo Lab Link]                |
@@ -115,6 +116,8 @@ Last keep-alive on 03/01/26
 [Shadowspect Link]: https://github.com/opengamedata/opengamedata-automation/actions/workflows/shadowspect.yml
 [Shipwrecks Badge]: https://github.com/opengamedata/opengamedata-automation/actions/workflows/shipwrecks.yml/badge.svg
 [Shipwrecks Link]: https://github.com/opengamedata/opengamedata-automation/actions/workflows/shipwrecks.yml
+[Spacefab Badge]: https://github.com/opengamedata/opengamedata-automation/actions/workflows/spacefab.yml/badge.svg
+[Spacefab Link]: https://github.com/opengamedata/opengamedata-automation/actions/workflows/spacefab.yml
 [Slide Badge]: https://github.com/opengamedata/opengamedata-automation/actions/workflows/slide.yml/badge.svg
 [Slide Link]: https://github.com/opengamedata/opengamedata-automation/actions/workflows/slide.yml
 [Stack Badge]: https://github.com/opengamedata/opengamedata-automation/actions/workflows/stack.yml/badge.svg
