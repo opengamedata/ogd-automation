@@ -53,7 +53,7 @@ Current workflows are configured to run at the following times:
 | 11:00      | 5:00 (AM)      | 6:00 (AM)                | Weekly    | STACK                | [![Stack][Stack Badge]][Stack Link]                               |
 | 10:25      | 4:25 (AM)      | 5:25 (AM)                | Daily     | THERMOLAB            | [![Thermo Lab][Thermo Lab Badge]][Thermo Lab Link]                |
 | 10:30      | 4:30 (AM)      | 5:30 (AM)                | Daily     | TRANSFORMATION_QUEST | [![Transformations Quest][Transformations Quest Badge]][Transformations Quest Link] |
-| 11:20      | 5:20 (AM)      | 6:20 (AM)                | Daily     | TE_BACTERIA          | ![Tiny Earth Bacteria][Tiny Earth Bacteria Badge]                 |
+| 11:20      | 5:20 (AM)      | 6:20 (AM)                | Daily     | TE_BACTERIA          | [![Tiny Earth Bacteria][Tiny Earth Bacteria Badge][Tiny Earth Bacteria Link]]     |
 | 10:35      | 4:35 (AM)      | 5:35 (AM)                | Daily     | WAVES                | [![Waves][Waves Badge]][Waves Link]                               |
 | 10:50      | 4:50 (AM)      | 5:50 (AM)                | Daily     | WEATHER_STATION      | [![Weather Station][Weather Station Badge]][Weather Station Link] |
 | 10:40      | 4:40 (AM)      | 5:40 (AM)                | Daily     | WIND                 | [![Wind][Wind Badge]][Wind Link]                                  |
